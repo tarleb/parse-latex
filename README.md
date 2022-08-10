@@ -10,6 +10,46 @@ reader to parse raw snippets.
 [CI badge]: https://img.shields.io/github/workflow/status/tarleb/parse-latex/CI?logo=github
 [CI workflow]: https://github.com/tarleb/parse-latex/actions/workflows/ci.yaml
 
+Functionality
+------------------------------------------------------------------
+
+The intended use for this filter are cases in which a Markdown
+document contains LaTeX snippets that are not just formatting
+additions, but a part of the content. Any raw LaTeX snippet, such
+as `\textcolor{red}{lorem ipsum}`, will be parsed as LaTeX. The
+result is then re-inserted into the document, replacing the
+snippet. The above will yield `<span style="color: red">lorem
+ipsum</span>` when converting to HTML.
+
+The snippets will be passed through unchanged when converting to
+LaTeX/PDF.
+
+The filter is particularly useful with tables: it becomes possible
+to use some of extra power of LaTeX, while still getting sensible
+output with other formats. E.g.:
+
+````
+```{=latex}
+\begin{tabular}{|l|l|}
+ \hline
+ one & two \\
+ \hline
+ three & four \\
+ \hline
+\end{tabular}
+```
+````
+
+The PDF output will have horizontal and vertical table lines,
+something that's otherwise difficult to accomplish with pandoc.¹
+
+The filter uses pandoc's LaTeX parser, so if pandoc cannot parse a
+LaTeX snippet, then neither can this filter.
+
+¹ The reason for this is that vertical lines in tables are
+  considered as ugly and bad style by most typographers.
+
+
 Usage
 ------------------------------------------------------------------
 
