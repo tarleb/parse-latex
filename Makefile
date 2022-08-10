@@ -38,18 +38,6 @@ test: $(FILTER_FILE) test/input.md test/test.yaml
 test/expected.native: $(FILTER_FILE) test/input.md test/test.yaml
 	$(PANDOC) --defaults test/test.yaml --output=$@
 
-# Settings for tests as a pandoc "defaults" file. This target
-# exists to get started quickly after renaming the filter. Feel
-# free to delete it after the defaults file is created.
-test/test.yaml:
-	@printf 'Generating test/test.yaml...'
-	@printf 'input-files: ["test/input.md"]\n' > $@
-	@printf 'to: native\n' >> $@
-	@printf 'standalone: true\n' >> $@
-	@printf 'filters:\n' >> $@
-	@printf '  - {type: lua, path: %s}' $(FILTER_FILE) >> $@
-	@printf ' DONE\n'
-
 #
 # Website
 #
