@@ -1,21 +1,32 @@
---- greetings.lua – turns any document into a friendly greeting
+--- parse-latex.lua – parse and replace raw LaTeX snippets
 ---
---- Copyright: © 2021–2022 Contributors
+--- Copyright: © 2021–2022 Albert Krewinkel
 --- License: MIT – see LICENSE for details
 
 -- Makes sure users know if their pandoc version is too old for this
 -- filter.
-PANDOC_VERSION:must_be_at_least '2.17'
+PANDOC_VERSION:must_be_at_least '2.9'
 
---- Amends the contents of a document with a simple greeting.
-local function say_hello (doc)
-  doc.meta.subtitle = doc.meta.title            -- demote title to subtitle
-  doc.meta.title = pandoc.Inlines 'Greetings!'  -- set new title
-  doc.blocks:insert(1, pandoc.Para 'Hello from the Lua filter!')
-  return doc
+-- Return an empty filter if the target format is LaTeX: the snippets will be
+-- passed through unchanged.
+if FORMAT:match 'latex' then
+  return {}
 end
 
-return {
-  -- Apply the `say_hello` function to the main Pandoc document.
-  { Pandoc = say_hello }
-}
+-- Parse and replace raw TeX blocks, leave all other raw blocks
+-- alone.
+function RawBlock (raw)
+  if raw.format:match 'tex' then
+    return pandoc.read(raw.text, 'latex').blocks
+  end
+end
+
+-- Parse and replace raw TeX inlines, leave other raw inline
+-- elements alone.
+function RawInline(raw)
+  if raw.format:match 'tex' then
+    return pandoc.utils.blocks_to_inlines(
+      pandoc.read(raw.text, 'latex').blocks
+    )
+  end
+end
