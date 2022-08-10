@@ -29,22 +29,23 @@ Pandoc
       , SoftBreak
       , Str "hendrerit"
       , Space
-      , Str "tempor"
-      , Space
-      , Str "tellus."
+      , Span
+          ( "" , [] , [ ( "style" , "color: red" ) ] )
+          [ Str "tempor" , Space , Str "tellus" ]
+      , Str "."
       , Space
       , Str "Donec"
       , Space
       , Str "pretium"
       , Space
       , Str "posuere"
-      , Space
+      , SoftBreak
       , Str "tellus."
       , Space
       , Str "Proin"
       , Space
       , Str "quam"
-      , SoftBreak
+      , Space
       , Str "nisl,"
       , Space
       , Str "tincidunt"
@@ -58,7 +59,13 @@ Pandoc
       , Str "convallis"
       , Space
       , Str "nec,"
-      , Space
+      , SoftBreak
       , Str "purus."
+      ]
+  , Para
+      [ Image
+          ( "" , [] , [] )
+          [ Str "A" , Space , Str "mandrill" ]
+          ( "mandrill.jpg" , "fig:" )
       ]
   ]
