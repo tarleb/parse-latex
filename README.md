@@ -1,21 +1,14 @@
-Greetings, a Lua Filter Template
+Parse LaTeX – a Lua filter
 ==================================================================
 
 [![GitHub build status][CI badge]][CI workflow]
 
-Greetings is a friendly Lua filter that adds a welcoming message
-to the document.
+A filter to use when the input contains raw LaTeX that should be
+included in other output formats. The filter uses pandoc's LaTeX
+reader to parse raw snippets.
 
-This repository serves as a template intended to make publishing
-of pandoc [Lua filters][] easy and convenient. Just click "use
-this template" and then make modifications in your new repository.
-See also the GitHub documentation on [creating a repository from a
-template][from template].
-
-[Lua filters]: https://pandoc.org/lua-filters.html
-[from template]: https://docs.github.com/en/repositories/creating-and-managing-repositories/creating-a-repository-from-a-template
-[CI badge]: https://img.shields.io/github/workflow/status/tarleb/lua-filter-template/CI?logo=github
-[CI workflow]: https://github.com/tarleb/lua-filter-template/actions/workflows/ci.yaml
+[CI badge]: https://img.shields.io/github/workflow/status/tarleb/parse-latex/CI?logo=github
+[CI workflow]: https://github.com/tarleb/parse-latex/actions/workflows/ci.yaml
 
 Checklist
 ------------------------------------------------------------------
