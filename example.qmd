@@ -1,0 +1,58 @@
+---
+title: "Parse LaTeX examples"
+format: html
+number-sections: true
+filters:
+  - parse-latex
+---
+
+
+\section{Section example $x^3$}\label{Section Example}
+
+
+
+\section{Table}\label{Table Example}
+
+
+\begin{center}
+\begin{tabular}{|l|l|l|}
+\hline
+Var           & Class  & Description\\
+\hline
+$x $             &  numeric      &   xyz \\
+$y$            &  numeric      &   xzh \\
+$z $          &  integer      &   xlp \\
+\hline
+\end{tabular}
+\end{center}
+
+
+\section{Enumeration}
+
+An enumeration
+
+\begin{enumerate}
+\item \textit{Title}\\
+Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam nonumy eirmod tempor invidunt ut labore et dolore magna aliquyam erat, sed diam voluptua. At vero eos et accusam et justo duo dolores et ea rebum. Stet clita kasd gubergren, no sea takimata sanctus est Lorem ipsum dolor sit amet. Lorem ipsum dolor sit amet, consetetur sadipscing
+\item \textit{Second Title}\\
+Lorem ipsum dolor sit ame....
+\end{enumerate}
+
+
+
+\section{Equations}
+
+\begin{equation}
+x^2 = x * x \label{equation}
+\end{equation}
+
+\section{Itemize}
+
+\begin{itemize}
+\item First bullet
+\item Second Bullet
+\end{itemize}
+
+\section{Cross-reference}
+
+\ref{Section Example} and \ref{Table Example} both are referenced as expected. See \ref{equation} for a reference to an equation.
