@@ -62,10 +62,11 @@ Pandoc
       , SoftBreak
       , Str "purus."
       ]
-  , Para
-      [ Image
-          ( "" , [] , [] )
-          [ Str "A" , Space , Str "mandrill" ]
-          ( "mandrill.jpg" , "fig:" )
+  , Figure
+      ( "" , [] , [] )
+      (Caption
+         Nothing [ Plain [ Str "A" , Space , Str "mandrill" ] ])
+      [ Plain
+          [ Image ( "" , [] , [] ) [] ( "mandrill.jpg" , "" ) ]
       ]
   ]
