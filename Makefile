@@ -39,42 +39,6 @@ test/expected.native: $(FILTER_FILE) test/input.md test/test.yaml
 	$(PANDOC) --defaults test/test.yaml --output=$@
 
 #
-# Website
-#
-.PHONY: website
-website: _site/index.html _site/$(FILTER_FILE)
-
-_site/index.html: README.md test/input.md $(FILTER_FILE) .tools/docs.lua \
-		_site/output.md _site/style.css
-	@mkdir -p _site
-	$(PANDOC) \
-	    --standalone \
-	    --lua-filter=.tools/docs.lua \
-	    --metadata=sample-file:test/input.md \
-	    --metadata=result-file:_site/output.md \
-	    --metadata=code-file:$(FILTER_FILE) \
-	    --css=style.css \
-	    --toc \
-	    --output=$@ $<
-
-_site/style.css:
-	@mkdir -p _site
-	curl \
-	    --output $@ \
-	    'https://cdn.jsdelivr.net/gh/kognise/water.css@latest/dist/light.css'
-
-_site/output.md: $(FILTER_FILE) test/input.md test/test.yaml
-	@mkdir -p _site
-	$(PANDOC) \
-	    --defaults=test/test.yaml \
-	    --to=markdown \
-	    --output=$@
-
-_site/$(FILTER_FILE): $(FILTER_FILE)
-	@mkdir -p _site
-	(cd _site && ln -sf ../$< $<)
-
-#
 # Quarto extension
 #
 
