@@ -1,6 +1,6 @@
 --- parse-latex.lua – parse and replace raw LaTeX snippets
 ---
---- Copyright: © 2021–2022 Albert Krewinkel
+--- Copyright: © 2021–2024 Albert Krewinkel
 --- License: MIT – see LICENSE for details
 
 -- Makes sure users know if their pandoc version is too old for this
