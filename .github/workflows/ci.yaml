@@ -23,14 +23,15 @@ on:
 jobs:
   test:
     runs-on: ubuntu-latest
+    container:
+      image: pandoc/minimal:latest-alpine
 
     steps:
       - name: Checkout
         uses: actions/checkout@v4
 
+      - name: Install dependencies
+        run: apk add make
+
       - name: Test
-        run: |
-          # Use docker image with current release.
-          make test \
-            PANDOC="docker run --rm --volume $(pwd):/data \
-              --user $(id -u):$(id -g) pandoc/core:latest"
+        run: make test
