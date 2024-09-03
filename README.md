@@ -20,8 +20,8 @@ The snippets will be passed through unchanged when converting to
 LaTeX/PDF.
 
 The filter is particularly useful with tables: it becomes possible
-to use some of extra power of LaTeX, while still getting sensible
-output with other formats. E.g.:
+to use some of the extra power of LaTeX for PDF production, while
+still getting sensible output with other formats. E.g.:
 
 ````
 ```{=latex}
